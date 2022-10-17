@@ -34,7 +34,7 @@ const Feed = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, repo]);
 
-  if (!commits) {
+  if (typeof commits === 'undefined') {
     return <Error />;
   }
 
@@ -49,11 +49,12 @@ const Feed = () => {
   return (
     <Layout>
       <Header title="Commit Feed" subtitle={`Showing results for /${user}/${repo}`} />
-      {initialCommits?.map(({ commit, html_url }: any) => {
+      {initialCommits?.map(({ commit, html_url, node_id }: any) => {
         const commitDate = new Date(commit.author.date).toLocaleDateString('en-US');
 
         return (
-          <FeedItem 
+          <FeedItem
+            key={node_id}
             author={commit.author.name}
             date={commitDate}
             message={commit.message}

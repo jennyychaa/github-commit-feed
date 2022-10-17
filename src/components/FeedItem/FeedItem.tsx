@@ -16,6 +16,7 @@ const FeedContainer = styled.div`
   border: 1px solid #A8A8A8;
   border-radius: 4px;
   margin-bottom: 24px;
+  background-color: #ffffff;
   padding: 16px;
 `;
 
